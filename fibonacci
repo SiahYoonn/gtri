@@ -83,3 +83,7 @@ if n > 0:
     turtle.done()
 else:
     print("Number of iterations must be > 0")
+#things to do
+#make more than 1 turtle
+#draw grid
+#make turtles draw square
