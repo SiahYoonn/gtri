@@ -1,0 +1,148 @@
+import turtle
+import math
+
+# Set up the turtle
+t = turtle.Turtle()
+
+# Set the screen dimensions
+screen = turtle.Screen()
+screen.setup(width=1.0, height=1.0)
+
+# Set the starting point to (0,0)
+t.penup()
+t.goto(0, 0)
+t.pendown()
+
+# Set the width of the lines
+t.width(1)
+
+# Set the range of the grid
+x_range = 6.4
+y_range = 4.0
+
+# Get the screen size
+screen_width = screen.window_width()
+screen_height = screen.window_height()
+
+# Set the starting and ending points for each axis
+x_start = -(x_range/2)
+x_end = x_range/2
+y_start = -(y_range/2)
+y_end = y_range/2
+
+# Calculate the scale factors to fit the grid to the screen
+x_scale = screen_width / x_range
+y_scale = screen_height / y_range
+scale_factor = min(x_scale, y_scale) * 0.8  # Scale down slightly to allow for padding
+
+# Set the number of ticks on each axis
+x_ticks = int(x_range/0.1)
+y_ticks = int(y_range/0.1)
+
+# Draw the vertical lines
+for i in range(x_ticks+1):
+    t.penup()
+    t.goto(x_start+(i*0.1*scale_factor), y_start)
+    t.pendown()
+    t.goto(x_start+(i*0.1*scale_factor), y_end)
+
+# Draw the horizontal lines
+for i in range(y_ticks+1):
+    t.penup()
+    t.goto(x_start, y_start+(i*0.1*scale_factor))
+    t.pendown()
+    t.goto(x_end, y_start+(i*0.1*scale_factor))
+
+
+
+# Place the turtle at (0,0)
+t.penup()
+t.goto(0, 0)
+
+
+
+
+#fibonacci
+turtle.color("black")
+turtle.speed(2)
+def fiboPlot(n):
+    a = 0
+    b = 1
+    square_a = a
+    square_b = b
+ 
+    # Setting the colour of the plotting pen to blue
+    x.pencolor("blue")
+ 
+    # Drawing the first square
+
+    x.forward(b * factor)
+    x.left(90)
+    x.forward(b * factor)
+    x.left(90)
+    x.forward(b * factor)
+    x.left(90)
+    x.forward(b * factor)
+ 
+    # Proceeding in the Fibonacci Series
+    temp = square_b
+    square_b = square_b + square_a
+    square_a = temp
+     
+    # Drawing the rest of the squares
+    for i in range(1, n):
+        x.backward(square_a * factor)
+        x.right(90)
+        x.forward(square_b * factor)
+        x.left(90)
+        x.forward(square_b * factor)
+        x.left(90)
+        x.forward(square_b * factor)
+ 
+        # Proceeding in the Fibonacci Series
+        temp = square_b
+        square_b = square_b + square_a
+        square_a = temp
+ 
+    # Bringing the pen to starting point of the spiral plot
+    x.penup()
+    x.setposition(factor, 0)
+    x.seth(0)
+    x.pendown()
+ 
+    # Setting the colour of the plotting pen to red
+    x.pencolor("red")
+ 
+    # Fibonacci Spiral Plot
+    x.left(90)
+    for i in range(n):
+        print(b)
+        fdwd = math.pi * b * factor / 2
+        fdwd /= 90
+        for j in range(90):
+            x.forward(fdwd)
+            x.left(1)
+        temp = a
+        a = b
+        b = temp + b
+ 
+ 
+# Here 'factor' signifies the multiplicative
+# factor which expands or shrinks the scale
+# of the plot by a certain factor.
+factor = 1
+ 
+# Taking Input for the number of
+# Iterations our Algorithm will run
+n = int(input('Enter the number of iterations (must be > 1): '))
+ 
+# Plotting the Fibonacci Spiral Fractal
+# and printing the corresponding Fibonacci Number
+if n > 0:
+    print("Fibonacci series for", n, "elements :")
+    x = turtle.Turtle()
+    x.speed(100)
+    fiboPlot(n)
+    turtle.done()
+else:
+    print("Number of iterations must be > 0")
